@@ -10,8 +10,8 @@
 
 Barco * meterBarco(int tamanyo)
 {
-	char vert='';
-	char col='';
+	char vert=' ';
+	char col=' ';
 	int numIni=0;
 	bool existeCol=false;
 	bool existeNum=false;
@@ -108,9 +108,9 @@ bool existeLetra(int tamanyo, char letra)
 
 }
 
-char calculaLetraFinal(char letraIni, tamanyo)
+char calculaLetraFinal(char letraIni, int tamanyo)
 {
-	char retorno='';
+	char retorno=' ';
 	retorno= letraIni+tamanyo;
 	return retorno;
 }

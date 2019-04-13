@@ -6,11 +6,18 @@
  */
 
 #include <stdio.h>
+#include <stdbool.h>
+#include "meterBarco.h"
 
 #ifndef INTERACCION_H_
 #define INTERACCION_H_
 
 void pedirNombresYBarcos();
 void mapa();
+void mapaConBarcos(Barco* barcos, int num);
+bool hayBarcos(Barco * barcos, int num, int fila, int col);
+bool hayBarco(Barco b, int fila, int col);
+int numerizarLetra(char c);
+
 
 #endif /* INTERACCION_H_ */
