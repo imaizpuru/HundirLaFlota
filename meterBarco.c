@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include "meterBarco.h"
 
-Barco * meterBarco(int tamanyo)
+Barco meterBarco(int tamanyo)
 {
 	char vert=' ';
 	char col=' ';
@@ -16,37 +16,44 @@ Barco * meterBarco(int tamanyo)
 	bool existeCol=false;
 	bool existeNum=false;
 	printf("Vas a introducir el barco de tamaño %i.\n", tamanyo);
-	while(vert!='v'||vert!='V'||vert!='h'||vert!='H')
+	while((vert!='v')&&(vert!='V')&&(vert!='h')&&(vert!='H'))
 	{
-		printf("¿Quieres que sea vertical u horizontal? (v/h)");
+		fflush(stdin);
+		printf("¿Quieres que sea vertical u horizontal? (v/h)\n");
 		scanf("%c",&vert);
+
 	}
+
 
 	if(vert=='v'||vert=='V')
 	{
+		//char i;
+		//scanf("%c", &i);
 		do
 		{
-			printf("Seleccione la columna: A-J");
+			printf("Seleccione la columna: A-J\n");
+			fflush(stdin);
 			scanf("%c",&col);
 			existeCol=existeColumna(col);
-			if(!existeCol) printf("Cuidado, ¡esa columna no existe!");
+			if(!existeCol) printf("Cuidado, ¡esa columna no existe!\n");
 		}while(!existeCol);
 
 		do
 		{
 			printf("Seleccione el primer numero:");
+			fflush(stdin);
 			scanf("%i",&numIni);
 			existeNum=existeNumero(numIni, 11-tamanyo);
 			if(!existeNum) printf("Cuidado, ¡el barco excede por debajo!\n");
 		}while(!existeNum);
 
-		Barco * retorno;
-		retorno = (Barco *) malloc(sizeof(Barco));
-		retorno->letraCom=col;
-		retorno->letraFin=col;
-		retorno->numCom=numIni;
-		retorno->numFin=numIni+tamanyo-1;
-		retorno->tamanyo=tamanyo;
+		Barco retorno;
+		//retorno =  malloc(sizeof(Barco));
+		retorno.letraCom=uppercase(col);
+		retorno.letraFin=uppercase(col);
+		retorno.numCom=numIni;
+		retorno.numFin=numIni+tamanyo-1;
+		retorno.tamanyo=tamanyo;
 		return retorno;
 	}
 
@@ -54,7 +61,8 @@ Barco * meterBarco(int tamanyo)
 	{
 		do
 		{
-			printf("Seleccione la fila: 1-10");
+			printf("Seleccione la fila: 1-10\n");
+			fflush(stdin);
 			scanf("%i",&numIni);
 			existeNum=existeFila(numIni);
 			if(!existeNum) printf("Cuidado, ¡esa fila no existe!\n");
@@ -62,23 +70,38 @@ Barco * meterBarco(int tamanyo)
 
 		do
 		{
-			printf("Seleccione la primera letra: ");
+			printf("Seleccione la primera letra:\n");
+			fflush(stdin);
 			scanf("%c",&col);
 			existeCol=existeLetra(tamanyo, col);
-			if(!existeCol) printf("Cuidado, ¡el barco excede por la derecha!");
+			if(!existeCol) printf("Cuidado, ¡el barco excede por la derecha!\n");
 		}while(!existeCol);
 
-		Barco * retorno;
-		retorno = (Barco *) malloc(sizeof(Barco));
-		retorno->letraCom=col;
-		retorno->letraFin=calculaLetraFinal(col, tamanyo);
-		retorno->numCom=numIni;
-		retorno->numFin=numIni;
-		retorno->tamanyo=tamanyo;
+		Barco retorno;
+		//retorno = (Barco *) malloc(sizeof(Barco));
+		retorno.letraCom=uppercase(col);
+		retorno.letraFin=calculaLetraFinal(uppercase(col), tamanyo);
+		retorno.numCom=numIni;
+		retorno.numFin=numIni;
+		retorno.tamanyo=tamanyo;
 		return retorno;
 	}
 }
 
+char uppercase(char a)
+{
+	if(a=='a') return 'A';
+	if(a=='b') return 'B';
+	if(a=='c') return 'C';
+	if(a=='d') return 'D';
+	if(a=='e') return 'E';
+	if(a=='f') return 'F';
+	if(a=='g') return 'G';
+	if(a=='h') return 'H';
+	if(a=='i') return 'I';
+	if(a=='j') return 'J';
+	else return a;
+}
 bool existeColumna(char col)
 {
 	if(col=='a'||col=='A'||col=='b'||col=='B'||col=='c'||col=='C'||col=='d'||col=='D'||col=='e'||col=='E') return true;

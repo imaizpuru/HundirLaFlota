@@ -12,7 +12,8 @@
 #ifndef INTERACCION_H_
 #define INTERACCION_H_
 
-void pedirNombresYBarcos();
+void pedirNombres();
+void pedirBarcos();
 void mapa();
 void mapaConBarcos(Barco* barcos, int num);
 bool hayBarcos(Barco * barcos, int num, int fila, int col);

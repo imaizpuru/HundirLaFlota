@@ -9,7 +9,7 @@
 #include "interaccion.h"
 #include <stdbool.h>
 
-void pedirNombresYBarcos()
+void pedirNombres()
 {
 	char* nombre1=NULL;
 	char* nombre2=NULL;
@@ -31,9 +31,32 @@ void pedirNombresYBarcos()
 
 	printf("Muchas gracias!\nAhora empezemos a jugar!");
 	scanf("%s", nombrep);
+}
+void pedirBarcos(char *n,char *n1)
+{
+	Barco * b;
+	Barco * a;
+	b= malloc(3*sizeof(Barco));
 
+	printf("%s, empezaremos con tus barcos.\n", n);
+	mapa();
+	*b=meterBarco(3);
+	mapaConBarcos(b, 1);
+	*(b+1)=meterBarco(4);
+	mapaConBarcos(b, 2);
+	*(b+2)=meterBarco(5);
+	printf("Trabajo hecho! Tu mapa se queda así.\n");
+	mapaConBarcos(b, 3);
 
-
+	/*printf("Ahora vamos con tus barcos, %s.", n1);
+	mapa();
+	*a=meterBarco(3);
+	mapaConBarcos(b, 1);
+	*(a+1)=meterBarco(4);
+	mapaConBarcos(b, 2);
+	*(a+2)=meterBarco(5);
+	printf("Trabajo hecho! Tu mapa se queda así.");
+	mapaConBarcos(a, 3);*/
 }
 
 void mapa()

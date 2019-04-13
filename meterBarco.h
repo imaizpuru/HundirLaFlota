@@ -18,11 +18,12 @@ int numCom;
 int numFin;
 }Barco;
 
-Barco * meterBarco(int tamanyo);
+Barco meterBarco(int tamanyo);
 bool existeColumna(char col);
 bool existeNumero(int num, int limite);
 bool existeFila(int fila);
 bool existeLetra(int tamanyo, char letra);
 char calculaLetraFinal(char letraIni, int tamanyo);
+char uppercase(char a);
 
 #endif /* HUNDIRLAFLOTA_METERBARCO_H_ */

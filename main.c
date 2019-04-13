@@ -10,8 +10,10 @@
 
 void main(void)
 {
-	//int i;
+	int i;
+	pedirBarcos("Ami", "Ima");
 	mapa();
+	scanf("%d", i);
 	Barco * barcos;
 	barcos= malloc(3*sizeof(Barco));
 	Barco b;
@@ -20,10 +22,10 @@ void main(void)
 	b.numCom=5;
 	b.numFin=7;
 	Barco b3;
-	b3.letraCom='A';
-	b3.letraFin='A';
+	b3.letraCom='J';
+	b3.letraFin='J';
 	b3.numCom=3;
-	b3.numFin=4;
+	b3.numFin=7;
 	Barco b2;
 	b2.letraCom='B';
 	b2.letraFin='E';
