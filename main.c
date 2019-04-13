@@ -7,36 +7,48 @@
 
 #include <stdio.h>
 #include "meterBarco.h"
+#include "interaccion.h"
+#include "escritorFic.h"
+#include <string.h>
 
-void main(void)
+int main(void)
 {
-	int i;
-	pedirBarcos("Ami", "Ima");
-	mapa();
-	scanf("%d", i);
-	Barco * barcos;
-	barcos= malloc(3*sizeof(Barco));
-	Barco b;
-	b.letraCom='A';
-	b.letraFin='A';
-	b.numCom=5;
-	b.numFin=7;
-	Barco b3;
-	b3.letraCom='J';
-	b3.letraFin='J';
-	b3.numCom=3;
-	b3.numFin=7;
-	Barco b2;
-	b2.letraCom='B';
-	b2.letraFin='E';
-	b2.numCom=1;
-	b2.numFin=1;
-	*barcos=b;
-	*(barcos+1)=b2;
-	*(barcos+2)=b3;
-	mapaConBarcos(barcos, 3);
-	//scanf("%d", i);
-//	pedirNombresYBarcos();
+	char* nombre1="";
+	nombre1=malloc(30);
+	char* nombre2="";
+	nombre2=malloc(30);
+	char* nombrep="";
+	nombrep=malloc(50);
 
+	printf("Bienvenidos al juego de hundir la flota.\n");
+	printf("Para jugar necesitareis ser dos personas.\n\n");
+
+	printf("Introduzca el nombre del primer jugador:\n");
+	fflush(stdin);
+	scanf("%s", nombre1);
+
+	printf("Introduzca el nombre del segundo jugador:\n");
+	fflush(stdin);
+	scanf("%s", nombre2);
+
+	printf("Bien %s y %s!\n", nombre1,nombre2);
+
+	printf("Ahora, debeis poner un nombre a vuestra partida:\n");
+	fflush(stdin);
+	scanf("%s", nombrep);
+
+	printf("Muchas gracias!\nAhora empecemos a jugar!");
+
+	Barco * barcos1;
+	barcos1 = malloc(5*sizeof(Barco));
+	Barco * barcos2;
+	barcos2 = malloc(5*sizeof(Barco));
+	pedirBarcos(nombre1, nombre2, barcos1, barcos2);
+
+	escribirAFichero(nombre1, nombre2, nombrep, barcos1, barcos2);
+	printf("Se ha creado un fichero, con el nombre HLFtxt.", nombrep);
+
+
+	return 0;
 }
 

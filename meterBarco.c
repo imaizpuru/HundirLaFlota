@@ -15,7 +15,7 @@ Barco meterBarco(int tamanyo)
 	int numIni=0;
 	bool existeCol=false;
 	bool existeNum=false;
-	printf("Vas a introducir el barco de tamaño %i.\n", tamanyo);
+	printf("Vas a introducir el barco de %i posiciones.\n", tamanyo);
 	while((vert!='v')&&(vert!='V')&&(vert!='h')&&(vert!='H'))
 	{
 		fflush(stdin);

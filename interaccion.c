@@ -8,55 +8,38 @@
 #include <stdio.h>
 #include "interaccion.h"
 #include <stdbool.h>
+# include <stdlib.h>
 
-void pedirNombres()
+
+void pedirBarcos(char * n,char * n1, Barco * b1, Barco * b2)
 {
-	char* nombre1=NULL;
-	char* nombre2=NULL;
-	char* nombrep=NULL;
-
-	printf("Bienvenido al juego de hundir la flota.\n");
-	printf("Para jugar necesitaréis ser dos personas.\n\n");
-
-	printf("Nombre del primer jugador:\n");
-	scanf("%s", nombre1);
-
-	printf("Nombre del segundo jugador:\n");
-	scanf("%s", nombre2);
-
-	printf("Bien %s y %s!\n", nombre1,nombre2);
-
-	printf("Ahora, debéis poner un nombre a vuestra partida:\n");
-	scanf("%s", nombrep);
-
-	printf("Muchas gracias!\nAhora empezemos a jugar!");
-	scanf("%s", nombrep);
-}
-void pedirBarcos(char *n,char *n1)
-{
-	Barco * b;
-	Barco * a;
-	b= malloc(3*sizeof(Barco));
-
 	printf("%s, empezaremos con tus barcos.\n", n);
 	mapa();
-	*b=meterBarco(3);
-	mapaConBarcos(b, 1);
-	*(b+1)=meterBarco(4);
-	mapaConBarcos(b, 2);
-	*(b+2)=meterBarco(5);
-	printf("Trabajo hecho! Tu mapa se queda así.\n");
-	mapaConBarcos(b, 3);
+	*b1=meterBarco(2);
+	mapaConBarcos(b1, 1);
+	*(b1+1)=meterBarco(2);
+	mapaConBarcos(b1, 2);
+	*(b1+2)=meterBarco(3);
+	mapaConBarcos(b1, 3);
+	*(b1+3)=meterBarco(4);
+	mapaConBarcos(b1, 4);
+	*(b1+4)=meterBarco(5);
+	printf("Trabajo hecho! Tu mapa se queda asi.\n");
+	mapaConBarcos(b1, 5);
 
-	/*printf("Ahora vamos con tus barcos, %s.", n1);
+	printf("Ahora vamos con tus barcos, %s.\n", n1);
 	mapa();
-	*a=meterBarco(3);
-	mapaConBarcos(b, 1);
-	*(a+1)=meterBarco(4);
-	mapaConBarcos(b, 2);
-	*(a+2)=meterBarco(5);
-	printf("Trabajo hecho! Tu mapa se queda así.");
-	mapaConBarcos(a, 3);*/
+	*b2=meterBarco(2);
+	mapaConBarcos(b2, 1);
+	*(b2+1)=meterBarco(2);
+	mapaConBarcos(b2, 2);
+	*(b2+2)=meterBarco(3);
+	mapaConBarcos(b2, 3);
+	*(b2+3)=meterBarco(4);
+	mapaConBarcos(b2, 4);
+	*(b2+4)=meterBarco(5);
+	printf("Trabajo hecho! Tu mapa se queda asi.\n");
+	mapaConBarcos(b2, 5);
 }
 
 void mapa()
@@ -178,5 +161,5 @@ int numerizarLetra(char c)
 	case 'J': return 9;
 			break;
 	}
-
+	return 0;
 }
