@@ -41,6 +41,7 @@ Barco meterBarco(int tamanyo, Barco * barcosAnteriores, int num)
 				printf("Seleccione la columna: A-J\n");
 				fflush(stdin);
 				scanf("%c",&col);
+				col=uppercase(col);
 				posY=numerizarLetra(col);
 				existeCol=existeColumna(col);
 				if(!existeCol) printf("Cuidado, ¡esa columna no existe!\n");
@@ -98,6 +99,7 @@ Barco meterBarco(int tamanyo, Barco * barcosAnteriores, int num)
 				printf("Seleccione la primera letra:\n");
 				fflush(stdin);
 				scanf("%c",&col);
+				col=uppercase(col);
 				existeCol=existeLetra(tamanyo, col);
 				posY=numerizarLetra(col);
 				if(!existeCol) printf("Cuidado, ¡el barco excede por la derecha!\n");
