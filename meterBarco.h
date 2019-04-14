@@ -18,7 +18,7 @@ int numCom;
 int numFin;
 }Barco;
 
-Barco meterBarco(int tamanyo);
+Barco meterBarco(int tamanyo, Barco * barcosAnteriores, int num);
 bool existeColumna(char col);
 bool existeNumero(int num, int limite);
 bool existeFila(int fila);

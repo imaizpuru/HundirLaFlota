@@ -7,14 +7,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "meterBarco.h"
+#include "interaccion.h"
 
-Barco meterBarco(int tamanyo)
+Barco meterBarco(int tamanyo, Barco * barcosAnteriores, int num)
 {
 	char vert=' ';
 	char col=' ';
 	int numIni=0;
 	bool existeCol=false;
 	bool existeNum=false;
+	bool yaHayBarco=false;
+	int posX=-1;
+	int posY=-1;
+
 	printf("Vas a introducir el barco de %i posiciones.\n", tamanyo);
 	while((vert!='v')&&(vert!='V')&&(vert!='h')&&(vert!='H'))
 	{
@@ -27,26 +32,41 @@ Barco meterBarco(int tamanyo)
 
 	if(vert=='v'||vert=='V')
 	{
-		//char i;
-		//scanf("%c", &i);
-		do
-		{
-			printf("Seleccione la columna: A-J\n");
-			fflush(stdin);
-			scanf("%c",&col);
-			existeCol=existeColumna(col);
-			if(!existeCol) printf("Cuidado, ¡esa columna no existe!\n");
-		}while(!existeCol);
+		do{
+			yaHayBarco=false;
+			posX=-1;
+			posY=-1;
+			do
+			{
+				printf("Seleccione la columna: A-J\n");
+				fflush(stdin);
+				scanf("%c",&col);
+				posY=numerizarLetra(col);
+				existeCol=existeColumna(col);
+				if(!existeCol) printf("Cuidado, ¡esa columna no existe!\n");
+			}while(!existeCol);
 
-		do
-		{
-			printf("Seleccione el primer numero:");
-			fflush(stdin);
-			scanf("%i",&numIni);
-			existeNum=existeNumero(numIni, 11-tamanyo);
-			if(!existeNum) printf("Cuidado, ¡el barco excede por debajo!\n");
-		}while(!existeNum);
+			do
+			{
+				printf("Seleccione el primer numero:");
+				fflush(stdin);
+				scanf("%i",&numIni);
+				existeNum=existeNumero(numIni, 11-tamanyo);
+				posX=numIni;
+				if(!existeNum) printf("Cuidado, ¡el barco excede por debajo!\n");
+			}while(!existeNum);
 
+			for(int i=0; i<tamanyo; i++)
+			{
+				yaHayBarco=hayBarcos(barcosAnteriores, num, posX+i, posY);
+				if(yaHayBarco)
+				{
+					printf("Parece que ya hay un barco en esa posicion. Intenta meter el barco de nuevo.");
+					break;
+				}
+			}
+
+		}while(yaHayBarco);
 		Barco retorno;
 		//retorno =  malloc(sizeof(Barco));
 		retorno.letraCom=uppercase(col);
@@ -59,24 +79,41 @@ Barco meterBarco(int tamanyo)
 
 	if(vert=='h'||vert=='H')
 	{
-		do
-		{
-			printf("Seleccione la fila: 1-10\n");
-			fflush(stdin);
-			scanf("%i",&numIni);
-			existeNum=existeFila(numIni);
-			if(!existeNum) printf("Cuidado, ¡esa fila no existe!\n");
-		}while(!existeNum);
+		do{
+			yaHayBarco=false;
+			posX=-1;
+			posY=-1;
+			do
+			{
+				printf("Seleccione la fila: 1-10\n");
+				fflush(stdin);
+				scanf("%i",&numIni);
+				existeNum=existeFila(numIni);
+				posX=numIni;
+				if(!existeNum) printf("Cuidado, ¡esa fila no existe!\n");
+			}while(!existeNum);
 
-		do
-		{
-			printf("Seleccione la primera letra:\n");
-			fflush(stdin);
-			scanf("%c",&col);
-			existeCol=existeLetra(tamanyo, col);
-			if(!existeCol) printf("Cuidado, ¡el barco excede por la derecha!\n");
-		}while(!existeCol);
+			do
+			{
+				printf("Seleccione la primera letra:\n");
+				fflush(stdin);
+				scanf("%c",&col);
+				existeCol=existeLetra(tamanyo, col);
+				posY=numerizarLetra(col);
+				if(!existeCol) printf("Cuidado, ¡el barco excede por la derecha!\n");
+			}while(!existeCol);
 
+			for(int i=0; i<tamanyo; i++)
+			{
+				yaHayBarco=hayBarcos(barcosAnteriores, num, posX, posY+i);
+				if(yaHayBarco)
+				{
+					printf("Parece que ya hay un barco en esa posicion. Intenta meter el barco de nuevo.");
+					break;
+				}
+			}
+
+		}while(yaHayBarco);
 		Barco retorno;
 		//retorno = (Barco *) malloc(sizeof(Barco));
 		retorno.letraCom=uppercase(col);
@@ -134,6 +171,6 @@ bool existeLetra(int tamanyo, char letra)
 char calculaLetraFinal(char letraIni, int tamanyo)
 {
 	char retorno=' ';
-	retorno= letraIni+tamanyo;
+	retorno= letraIni+tamanyo-1;
 	return retorno;
 }

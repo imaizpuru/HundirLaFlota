@@ -15,29 +15,29 @@ void pedirBarcos(char * n,char * n1, Barco * b1, Barco * b2)
 {
 	printf("%s, empezaremos con tus barcos.\n", n);
 	mapa();
-	*b1=meterBarco(2);
+	*b1=meterBarco(2, b1, 0);
 	mapaConBarcos(b1, 1);
-	*(b1+1)=meterBarco(2);
+	*(b1+1)=meterBarco(2, b1, 1);
 	mapaConBarcos(b1, 2);
-	*(b1+2)=meterBarco(3);
+	*(b1+2)=meterBarco(3, b1, 2);
 	mapaConBarcos(b1, 3);
-	*(b1+3)=meterBarco(4);
+	*(b1+3)=meterBarco(4, b1 ,3);
 	mapaConBarcos(b1, 4);
-	*(b1+4)=meterBarco(5);
+	*(b1+4)=meterBarco(5, b1, 4);
 	printf("Trabajo hecho! Tu mapa se queda asi.\n");
 	mapaConBarcos(b1, 5);
 
 	printf("Ahora vamos con tus barcos, %s.\n", n1);
 	mapa();
-	*b2=meterBarco(2);
+	*b2=meterBarco(2, b2, 0);
 	mapaConBarcos(b2, 1);
-	*(b2+1)=meterBarco(2);
+	*(b2+1)=meterBarco(2, b2, 1);
 	mapaConBarcos(b2, 2);
-	*(b2+2)=meterBarco(3);
+	*(b2+2)=meterBarco(3, b2, 2);
 	mapaConBarcos(b2, 3);
-	*(b2+3)=meterBarco(4);
+	*(b2+3)=meterBarco(4, b2, 3);
 	mapaConBarcos(b2, 4);
-	*(b2+4)=meterBarco(5);
+	*(b2+4)=meterBarco(5, b2, 4);
 	printf("Trabajo hecho! Tu mapa se queda asi.\n");
 	mapaConBarcos(b2, 5);
 }
@@ -132,7 +132,7 @@ bool hayBarco(Barco b, int fila, int col)
 	int numCom = b.numCom;
 	int numFin =b.numFin;
 	if(fila<=numFin&&fila>=numCom&&col<=letraFinNumerizado&&col>=letraComNumerizado) return true;
-	else return false;
+	return false;
 }
 
 int numerizarLetra(char c)
