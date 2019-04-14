@@ -131,7 +131,8 @@ bool hayBarco(Barco b, int fila, int col)
 	int letraFinNumerizado = numerizarLetra(b.letraFin);
 	int numCom = b.numCom;
 	int numFin =b.numFin;
-	if(fila<=numFin&&fila>=numCom&&col<=letraFinNumerizado&&col>=letraComNumerizado) return true;
+	if(((fila>=numCom)&&(fila<=numFin)&&(col==letraComNumerizado))||((col>=letraComNumerizado)&&(col<=letraFinNumerizado)&&(fila==numCom))) return true;
+	//(fila<=numFin&&fila>=numCom&&col<=letraFinNumerizado&&col>=letraComNumerizado)
 	return false;
 }
 
