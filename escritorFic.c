@@ -12,14 +12,14 @@
 #include "escritorFic.h"
 #include <string.h>
 
-void escribirAFichero(char * nom1, char * nom2, char * nomPartida, Barco * barcos1, Barco * barcos2)
+void escribirAFichero(char * nom1, char * nom2, char * nomPartida, Barco * barcos1, Barco * barcos2, int opcion)
 {
 	char letraCom=' ';
 	char letraFin=' ';
 	int tamanyo=0;
 	int numCom=0;
 	int numFin=0;
-
+	int num=opcion*2+3;
 
 	char * nomFichero = malloc(8*sizeof(char));
 	nomFichero= "HLF.txt";
@@ -27,11 +27,12 @@ void escribirAFichero(char * nom1, char * nom2, char * nomPartida, Barco * barco
 	FILE * fic;
 	fic=fopen(nomFichero, "w");
 
+	fprintf(fic, "%i\n", opcion);
 	fprintf(fic, "%s\n", nomPartida);
 	fprintf(fic, "%s\n", nom1);
 	fprintf(fic, "%s\n", nom2);
 
-	for(int i=0; i<5; i++)
+	for(int i=0; i<num; i++)
 	{
 		letraCom = (barcos1+i)->letraCom;
 		letraFin = (barcos1+i)->letraFin;
@@ -46,7 +47,7 @@ void escribirAFichero(char * nom1, char * nom2, char * nomPartida, Barco * barco
 		fprintf(fic, "%i\n", numFin);
 	}
 
-	for(int i=0; i<5; i++)
+	for(int i=0; i<num; i++)
 	{
 		letraCom = (barcos2+i)->letraCom;
 		letraFin = (barcos2+i)->letraFin;

@@ -14,6 +14,8 @@
 
 void pedirNombres();
 void pedirBarcos();
+void pedirBarcos2();
+void pedirBarcos3();
 void mapa();
 void mapaConBarcos(Barco* barcos, int num);
 bool hayBarcos(Barco * barcos, int num, int fila, int col);

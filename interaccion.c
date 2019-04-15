@@ -41,7 +41,92 @@ void pedirBarcos(char * n,char * n1, Barco * b1, Barco * b2)
 	printf("Trabajo hecho! Tu mapa se queda asi.\n");
 	mapaConBarcos(b2, 5);
 }
+void pedirBarcos2(char * n,char * n1, Barco * b1, Barco * b2)
+{
+	printf("%s, empezaremos con tus barcos.\n", n);
+	mapa();
+	*b1=meterBarco(2, b1, 0);
+	mapaConBarcos(b1, 1);
+	*(b1+1)=meterBarco(2, b1, 1);
+	mapaConBarcos(b1, 2);
+	*(b1+2)=meterBarco(2, b1, 2);
+	mapaConBarcos(b1, 3);
+	*(b1+3)=meterBarco(3, b1 ,3);
+	mapaConBarcos(b1, 4);
+	*(b1+4)=meterBarco(3, b1, 4);
+	mapaConBarcos(b1, 5);
+	*(b1+5)=meterBarco(4, b1, 5);
+	mapaConBarcos(b1, 6);
+	*(b1+6)=meterBarco(5, b1, 6);
+	printf("Trabajo hecho! Tu mapa se queda asi.\n");
+	mapaConBarcos(b1, 7);
 
+	printf("Ahora vamos con tus barcos, %s.\n", n1);
+	mapa();
+	*b2=meterBarco(2, b2, 0);
+	mapaConBarcos(b2, 1);
+	*(b2+1)=meterBarco(2, b2, 1);
+	mapaConBarcos(b2, 2);
+	*(b2+2)=meterBarco(2, b2, 2);
+	mapaConBarcos(b2, 3);
+	*(b2+3)=meterBarco(3, b2 ,3);
+	mapaConBarcos(b2, 4);
+	*(b2+4)=meterBarco(3, b2, 4);
+	mapaConBarcos(b2, 5);
+	*(b2+5)=meterBarco(4, b2, 5);
+	mapaConBarcos(b2, 6);
+	*(b2+6)=meterBarco(5, b2, 6);
+	printf("Trabajo hecho! Tu mapa se queda asi.\n");
+	mapaConBarcos(b2, 7);
+}
+void pedirBarcos3(char * n,char * n1, Barco * b1, Barco * b2)
+{
+	printf("%s, empezaremos con tus barcos.\n", n);
+	mapa();
+	*b1=meterBarco(2, b1, 0);
+	mapaConBarcos(b1, 1);
+	*(b1+1)=meterBarco(2, b1, 1);
+	mapaConBarcos(b1, 2);
+	*(b1+2)=meterBarco(2, b1, 2);
+	mapaConBarcos(b1, 3);
+	*(b1+3)=meterBarco(2, b1 ,3);
+	mapaConBarcos(b1, 4);
+	*(b1+4)=meterBarco(3, b1, 4);
+	mapaConBarcos(b1, 5);
+	*(b1+5)=meterBarco(3, b1, 5);
+	mapaConBarcos(b1, 6);
+	*(b1+6)=meterBarco(4, b1, 6);
+	mapaConBarcos(b1, 7);
+	*(b1+7)=meterBarco(4, b1, 7);
+	mapaConBarcos(b1, 8);
+	*(b1+8)=meterBarco(5, b1, 8);
+
+	printf("Trabajo hecho! Tu mapa se queda asi.\n");
+	mapaConBarcos(b1, 9);
+
+	printf("Ahora vamos con tus barcos, %s.\n", n1);
+	mapa();
+	*b2=meterBarco(2, b2, 0);
+	mapaConBarcos(b2, 1);
+	*(b2+1)=meterBarco(2, b2, 1);
+	mapaConBarcos(b2, 2);
+	*(b2+2)=meterBarco(2, b2, 2);
+	mapaConBarcos(b2, 3);
+	*(b2+3)=meterBarco(2, b2 ,3);
+	mapaConBarcos(b2, 4);
+	*(b2+4)=meterBarco(3, b2, 4);
+	mapaConBarcos(b2, 5);
+	*(b2+5)=meterBarco(3, b2, 5);
+	mapaConBarcos(b2, 6);
+	*(b2+6)=meterBarco(4, b2, 6);
+	mapaConBarcos(b2, 7);
+	*(b2+7)=meterBarco(4, b2, 7);
+	mapaConBarcos(b2, 8);
+	*(b2+8)=meterBarco(5, b2, 8);
+
+	printf("Trabajo hecho! Tu mapa se queda asi.\n");
+	mapaConBarcos(b2, 9);
+}
 void mapa()
 {
 	printf("    A   B   C   D   E   F   G   H   I   J\n");
