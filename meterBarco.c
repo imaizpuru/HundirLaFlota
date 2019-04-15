@@ -150,13 +150,13 @@ bool existeColumna(char col)
 
 bool existeNumero(int num, int limite)
 {
-	if(num<=limite) return true;
+	if((num<=limite)&&(num>0)) return true;
 	return false;
 }
 
 bool existeFila(int fila)
 {
-	if(fila<=10) return true;
+	if((fila<=10)&&(fila>0)) return true;
 	return false;
 }
 
